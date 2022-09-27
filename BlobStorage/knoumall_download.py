@@ -1,24 +1,29 @@
 import os, uuid
+import sys
+
+
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+
 
 try:
   print("한국방송통신대학교 4학년 2학기 클라우드 컴퓨팅")
 
-  connect_str = "<연결 문자열>"
-  blob_service_client = BlobServiceClient.from_connection_ string(connect_str)
-  container_name = "cloud-shop-cc"
-  local_file_name = "quickstart" + str(uuid.uuid4()) + ".txt" 
-  upload_file_path = local_file_name
-  file = open(upload_file_path,'w')
-  file.write("Hello, World!")
-  file.close( )
+  connect_str = ""
+  container_name = "mall-blob-container"
+  local_path = "../ung_CloudComputing/blobs/"
 
-  blob_client = blob_service_client.get_blob_client(container=container_ name, blob=local_file_name)
-  print("\nUploading to Azure Storage as blob:\n\t" + local_file_name)
+  if not os.path.exists(local_path):
+    os.makedirs(local_path)
 
-  # Upload the created file
-  with open(upload_file_path, "rb") as data:
-    blob_client.upload_blob(data)
+  container_client = blob_service_client.get_container_client(container=container_name)
+
+  generator = container_client.list_blobs()
+
+  for blob in generator:
+    download_file_path = os.path.join(local_path, blob.name)
+    print(f"\nDownloading {blob.name} to \t" + local_path + blob.name)
+    with open(download_file_path, "wb") as download_file:
+      download_file.write(container_client.download_blob(blob.name).readall())
 
 except Exception as ex: 
   print('Exception:')
