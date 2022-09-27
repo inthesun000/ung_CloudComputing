@@ -78,13 +78,5 @@ def db_info(host, user, password, db):
     click.echo(str_check_info)
     click.echo("데이터베이스 정보가 잘 생성되었습니다")
 
-@cli.command()
-@click.option('--host', default="", help='DB Host')
-@click.option('--user', default="", help='DB User')
-@click.option('--password', default="", help='DB User Password')
-@click.option('--db', default="", help='DB Name')
-def check_info(host, user, password, db):
-    click.echo("host= ", host, "    user= ", user, " password= ", password, "    db= ", db)
-
 if __name__ == '__main__':
     cli()
