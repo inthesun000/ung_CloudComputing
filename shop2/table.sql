@@ -1,11 +1,11 @@
 CREATE TABLE shop_member (
 	id INTEGER NOT NULL IDENTITY(1,1), 
-	name VARCHAR(50) NULL COLLATE Latin1_General_100_CI_AI_SC_UTF8, 
+	name VARCHAR(50) COLLATE Latin1_General_100_CI_AI_SC_UTF8 NULL, 
 	email VARCHAR(200) NULL, 
 	password VARCHAR(32) NULL, 
 	post_code VARCHAR(5) NULL, 
-	address VARCHAR(255) NULL COLLATE Latin1_General_100_CI_AI_SC_UTF8, 
-	detail_address VARCHAR(255) NULL COLLATE Latin1_General_100_CI_AI_SC_UTF8, 
+	address VARCHAR(255) COLLATE Latin1_General_100_CI_AI_SC_UTF8 NULL, 
+	detail_address VARCHAR(255) COLLATE Latin1_General_100_CI_AI_SC_UTF8 NULL, 
 	is_admin CHAR(1) NULL, 
 	create_date DATETIME NULL, 
 	PRIMARY KEY (id), 
@@ -14,12 +14,12 @@ CREATE TABLE shop_member (
 
 CREATE TABLE goods (
 	id INTEGER NOT NULL IDENTITY(1,1), 
-	goods_name VARCHAR(255) NULL COLLATE Latin1_General_100_CI_AI_SC_UTF8, 
+	goods_name VARCHAR(255) COLLATE Latin1_General_100_CI_AI_SC_UTF8 NULL, 
 	price INTEGER NULL, 
-	goods_photo VARCHAR(255) NULL COLLATE Latin1_General_100_CI_AI_SC_UTF8, 
+	goods_photo VARCHAR(255) COLLATE Latin1_General_100_CI_AI_SC_UTF8 NULL, 
 	goods_cnt INTEGER NULL, 
 	goods_ranking INTEGER NULL, 
-	goods_description VARCHAR(max) NULL COLLATE Latin1_General_100_CI_AI_SC_UTF8, 
+	goods_description VARCHAR(max) COLLATE Latin1_General_100_CI_AI_SC_UTF8 NULL, 
 	PRIMARY KEY (id)
 )
 
