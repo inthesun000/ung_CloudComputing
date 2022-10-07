@@ -1,7 +1,5 @@
 import os, uuid
 import sys
-
-
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
 
 
